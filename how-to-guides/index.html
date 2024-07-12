@@ -371,12 +371,13 @@ s = inicio(t_i_val, epsilon_val, tiempos_val)
 </code></pre></div>
 
 <p>asi ya tenemos un np.array con la probabilidad de encontrar el fermion para cada uno de los puntos de la grilla.
-si quisieras crear una animacion de la evolucion temporal para la probabilidad de encontrar el fermion en cada punto de la grila podrias usar el siguiente codigo:
-    #tu_script.py
-    from metodos.proyecto import inicio
-    import matplotlib.pyplot as plt
-    from matplotlib.animation import FuncAnimation </p>
-<div class="codehilite"><pre><span></span><code>N = 100                         # Tamaño de la grilla donde se ubicara el fermion
+si quisieras crear una animacion de la evolucion temporal para la probabilidad de encontrar el fermion en cada punto de la grila podrias usar el siguiente codigo:</p>
+<div class="codehilite"><pre><span></span><code>#tu_script.py
+from metodos.proyecto import inicio
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+N = 100                         # Tamaño de la grilla donde se ubicara el fermion
 epsilon_val = 0.5 * np.ones(N)  #valores de potencial 
 t_i_val = 1 * np.ones(N)        # valores relacionados a la probabilidad del movimiento para el fermion dentro de la grilla
 tiempos_val = np.linspace(0.0, 25, 200)  # puntos temporales en los que se desea evaluar la evolucion de la grilla
