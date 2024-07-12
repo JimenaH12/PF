@@ -58,9 +58,10 @@ El término de orden $h^2$ desaparece y nuestra aproximación tiene un error de 
 El único problema es que requerimos conocer el valor de la función en el punto medio $x(t + \frac{h}{2})$, el cual desconocemos.
 
 Para aproximar este valor utilizamos el método de Euler con un paso $\frac{h}{2}$, $(x + \frac{h}{2}) = x(t) + \frac{h}{2}f(x,t)$. De esta manera, obtenemos las ecuaciones del método RK2:
-* $k_1 = hf(x,t),$
-* $k_2 = hf\left(x + \frac{k_1}{2},t + \frac{h}{2}\right)$
-* $x(t + h) = x(t) + k_2$
+    $k_1 = hf(x,t),$
+    $k_2 = hf\left(x + \frac{k_1}{2},t + \frac{h}{2}\right)$
+    $x(t + h) = x(t) + k_2$
+
 El error de aproximación de cada paso es de orden $O(h^3)$, mientras que el error global (con un análisis similar al que hicimos con el método de Euler) es de order $O(h^2)$. 
 
 Cabe recalcar que al utilizar el método de Euler para la primera parte de la aproximación, el error también es de $O(h^3)$ y por ende el error de aproximación se mantiene de $O(h^3)$.
@@ -72,11 +73,11 @@ La metodología anterior se puede aplicar aún a más puntos ubicados entre $x(t
 El problema de hacer esto es que las expresiones se vuelven más complicadas conforme incrementamos el orden de aproximación. En general, la regla de dedo es que el $4^{\rm to}$ orden corresponde al mejor compromiso entre complejidad y error de aproximación. Este método es el más utilizado comunmente para resolver diferentes sistemas.  
 
 El álgebra para encontrar las ecuaciones de $4^{\rm to}$ orden es tediosa, pero el resultado final es
-* $k_1 = hf(x, t)$,
-* $k_2 = hf\left(x + \frac{k_1}{2}, t+\frac{h}2\right)$,
-* $k_3 = hf\left(x + \frac{k_2}{2}, t+\frac{h}2\right)$,
-* $k_4 = hf\left(x + k_3, t + h \right)$,
-* $x(t+h) = x(t) + \frac{1}{6}(k_1 + 2 k_2 + 2k_3 + k_4)$.
+    $k_1 = hf(x, t)$,
+    $k_2 = hf\left(x + \frac{k_1}{2}, t+\frac{h}2\right)$,
+    $k_3 = hf\left(x + \frac{k_2}{2}, t+\frac{h}2\right)$,
+    $k_4 = hf\left(x + k_3, t + h \right)$,
+    $x(t+h) = x(t) + \frac{1}{6}(k_1 + 2 k_2 + 2k_3 + k_4)$.
 
 Para la mayoría de aplicaciones, el método RK4 es el método de-facto para obtener soluciones. Es fácil de programar y devuelve resultados precisos. 
 

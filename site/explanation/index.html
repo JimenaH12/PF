@@ -486,31 +486,24 @@
 <h3 id="metodo-de-runge-kutta">Método de Runge-Kutta<a class="headerlink" href="#metodo-de-runge-kutta" title="Permanent link">&para;</a></h3>
 <p>El método de Runge-Kutta es en realidad una familia de métodos de distinto orden que proveen una mejor aproximación sin la necesidad de considerar ordenes más altos en la expansión de Taylor del método de Euler. Este último punto se quiere evitar, dado que su complejidad es muy elevada para la situación presente. Por esta razón, se introducen los métodos Runge-Kutta 2<span class="arithmatex">\(^{\rm do}\)</span> Orden (RK2) y Runge-Kutta de 4<span class="arithmatex">\(^{\rm to}\)</span> Orden. </p>
 <h3 id="metodo-de-runge-kutta-2rm-do-orden-rk2">Método de Runge-Kutta 2<span class="arithmatex">\(^{\rm do}\)</span> Orden (RK2)<a class="headerlink" href="#metodo-de-runge-kutta-2rm-do-orden-rk2" title="Permanent link">&para;</a></h3>
-<p>La idea del método RK2 es utilizar el punto medio para evaluar el método de Euler, como se indica en la figura. Mientras que el método de Euler se aplica en el punto <span class="arithmatex">\(t\)</span> para evaluar la derivada para aproximar la función en el punto <span class="arithmatex">\(x = t + h\)</span>, el método RK2 utiliza el punto medio <span class="arithmatex">\(t + h/2\)</span>. </p>
+<p>La idea del método RK2 es utilizar el punto medio para evaluar el método de Euler, como se indica en la figura. Mientras que el método de Euler se aplica en el punto <span class="arithmatex">\(t\)</span> para evaluar la derivada para aproximar la función en el punto <span class="arithmatex">\(x = t + h\)</span>, el método RK2 utiliza el punto medio <span class="arithmatex">\(t + \frac{h}{2}\)</span>. </p>
 <p>De esta forma, se alcanza una mejor aproximación para el mismo valor de <span class="arithmatex">\(h\)</span>.</p>
-<p>El método se deriva aplicando la serie de Taylor alrededor del punto medio <span class="arithmatex">\(t + h/2\)</span> para obtener el valor de la función en el punto <span class="arithmatex">\(x(t + h)\)</span>. Tenemos
-$$
-x(t + h) = x\left(t + \frac{h}{2}\right) + \frac{h}{2}\left(\frac{{\rm d}x}{{\rm d}t}\right)<em>{t+h/2} + \frac{h^2}{8}\left(\frac{{\rm d}^2x}{{\rm d}t^2}\right)</em>{t+h/2} + O(h^3).
-$$
+<p>El método se deriva aplicando la serie de Taylor alrededor del punto medio <span class="arithmatex">\(t + \frac{h}{2}\)</span> para obtener el valor de la función en el punto <span class="arithmatex">\(x(t + h)\)</span>. Tenemos:</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(x(t + h) = x(t + \frac{h}{2}) + \frac{h}{2} (\frac{dx}{dt})+ \frac{h^2}{8}(\frac{{\rm d}^2x}{{\rm d}t^2}) + O(h^3).\)</span>\)</span>
 Similarmente, podemos hacer lo mismo para <span class="arithmatex">\(x(t)\)</span>, tal que
-$$
-x(t) = x\left(t + \frac{h}{2}\right) - \frac{h}{2}\left(\frac{{\rm d}x}{{\rm d}t}\right)<em>{t+h/2} + \frac{h^2}{8}\left(\frac{{\rm d}^2x}{{\rm d}t^2}\right)</em>{t+h/2} + O(h^3).
-$$
-Al sustraer ambas ecuaciones obtenemos
-$$
-x(t + h) = x(t) + h\left(\frac{{\rm d}x}{{\rm d}t}\right)_{t+h/2} + O(h^3)
-$$
+<span class="arithmatex">\(<span class="arithmatex">\(x(t) = x(t + \frac{h}{2}) - \frac{h}{2}(\frac{dx}{dt}) + \frac{h^2}{8}(\frac{d^2x}{dt^2}) + O(h^3).\)</span>\)</span>
+Al sustraer ambas ecuaciones obtenemos:
+<span class="arithmatex">\(<span class="arithmatex">\(x(t + h) = x(t) + h\frac{dx}{dt} + O(h^3).\)</span>\)</span>
 Finalmente,
-$$
-\boxed{x(t + h) = x(t) + hf[x(t + h/2), t + h/2] + O(h^3)}.
-$$
+<span class="arithmatex">\(<span class="arithmatex">\(x(t + h) = x(t) + hf[x(t + \frac{h}{2}, t + \frac{h}{2}] + O(h^3).\)</span>\)</span>
 El término de orden <span class="arithmatex">\(h^2\)</span> desaparece y nuestra aproximación tiene un error de orden <span class="arithmatex">\(h^3\)</span>. Recordemos que incrementar el orden del error por un orden de magnitud es muy beneficioso a nivel computacional. </p>
-<p>El único problema es que requerimos conocer el valor de la función en el punto medio <span class="arithmatex">\(x(t + h/2)\)</span>, el cual desconocemos.</p>
-<p>Para aproximar este valor utilizamos el método de Euler con un paso <span class="arithmatex">\(h/2\)</span>, <span class="arithmatex">\((x + h/2) = x(t) + \frac{h}{2}f(x,t)\)</span>. De esta manera, obtenemos las ecuaciones del método RK2:
+<p>El único problema es que requerimos conocer el valor de la función en el punto medio <span class="arithmatex">\(x(t + \frac{h}{2})\)</span>, el cual desconocemos.</p>
+<p>Para aproximar este valor utilizamos el método de Euler con un paso <span class="arithmatex">\(\frac{h}{2}\)</span>, <span class="arithmatex">\((x + \frac{h}{2}) = x(t) + \frac{h}{2}f(x,t)\)</span>. De esta manera, obtenemos las ecuaciones del método RK2:
 * <span class="arithmatex">\(k_1 = hf(x,t),\)</span>
 * <span class="arithmatex">\(k_2 = hf\left(x + \frac{k_1}{2},t + \frac{h}{2}\right)\)</span>
 * <span class="arithmatex">\(x(t + h) = x(t) + k_2\)</span>
 El error de aproximación de cada paso es de orden <span class="arithmatex">\(O(h^3)\)</span>, mientras que el error global (con un análisis similar al que hicimos con el método de Euler) es de order <span class="arithmatex">\(O(h^2)\)</span>. </p>
+<p>Cabe recalcar que al utilizar el método de Euler para la primera parte de la aproximación, el error también es de <span class="arithmatex">\(O(h^3)\)</span> y por ende el error de aproximación se mantiene de <span class="arithmatex">\(O(h^3)\)</span>.</p>
 <h3 id="metodo-de-runge-kutta-de-4rm-to-orden">Método de Runge-Kutta de 4<span class="arithmatex">\(^{\rm to}\)</span> Orden<a class="headerlink" href="#metodo-de-runge-kutta-de-4rm-to-orden" title="Permanent link">&para;</a></h3>
 <p>La metodología anterior se puede aplicar aún a más puntos ubicados entre <span class="arithmatex">\(x(t)\)</span> y <span class="arithmatex">\(x(t + h)\)</span> realizando expansiones de Taylor. De esta forma se pueden agrupar términos de orden <span class="arithmatex">\(h^3\)</span>, <span class="arithmatex">\(h^4\)</span>, etc; para cancelar dichas expresiones. </p>
 <p>El problema de hacer esto es que las expresiones se vuelven más complicadas conforme incrementamos el orden de aproximación. En general, la regla de dedo es que el <span class="arithmatex">\(4^{\rm to}\)</span> orden corresponde al mejor compromiso entre complejidad y error de aproximación. Este método es el más utilizado comunmente para resolver diferentes sistemas.  </p>
