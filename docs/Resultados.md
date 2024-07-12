@@ -4,7 +4,7 @@ En esta sección se mostrarán los resultados obtenidos de MODELO DE TIGHT BINDI
 
 
 
-![Animación1](referencia.mp4)
+![Animación1](referencia.gif)
 
 
 
@@ -12,12 +12,12 @@ En esta sección se mostrarán los resultados obtenidos de MODELO DE TIGHT BINDI
 #### Variación de los parámetros energéticos
 
 
-![Animación2](e=5.mp4)
+![Animación2](e_5.gif)
 
 
-![Animación3](t=4.mp4)
+![Animación3](t_4.gif)
 
-![Animación3](extendida.mp4)
+![Animación3](extendida.gif)
 
 
 
