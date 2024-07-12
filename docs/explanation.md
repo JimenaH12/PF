@@ -44,31 +44,25 @@ La idea del método RK2 es utilizar el punto medio para evaluar el método de Eu
 
 De esta forma, se alcanza una mejor aproximación para el mismo valor de $h$.
 
-El método se deriva aplicando la serie de Taylor alrededor del punto medio $t + h/2$ para obtener el valor de la función en el punto $x(t + h)$. Tenemos
-$$
-x(t + h) = x\left(t + \frac{h}{2}\right) + \frac{h}{2}\left(\frac{{\rm d}x}{{\rm d}t}\right)_{t+h/2} + \frac{h^2}{8}\left(\frac{{\rm d}^2x}{{\rm d}t^2}\right)_{t+h/2} + O(h^3).
-$$
-Similarmente, podemos hacer lo mismo para $x(t)$, tal que
-$$
-x(t) = x\left(t + \frac{h}{2}\right) - \frac{h}{2}\left(\frac{{\rm d}x}{{\rm d}t}\right)_{t+h/2} + \frac{h^2}{8}\left(\frac{{\rm d}^2x}{{\rm d}t^2}\right)_{t+h/2} + O(h^3).
-$$
-Al sustraer ambas ecuaciones obtenemos
-$$
-x(t + h) = x(t) + h\left(\frac{{\rm d}x}{{\rm d}t}\right)_{t+h/2} + O(h^3)
-$$
-Finalmente,
-$$
-\boxed{x(t + h) = x(t) + hf[x(t + h/2), t + h/2] + O(h^3)}.
-$$
-El término de orden $h^2$ desaparece y nuestra aproximación tiene un error de orden $h^3$. Recordemos que incrementar el orden del error por un orden de magnitud es muy beneficioso a nivel computacional. 
+El método RK2 se deriva aplicando la serie de Taylor alrededor del punto medio \( t + \frac{h}{2} \) para obtener el valor de la función en el punto \( x(t + h) \):
 
-El único problema es que requerimos conocer el valor de la función en el punto medio $x(t + h/2)$, el cual desconocemos.
+$$ x(t + h) = x(t + \frac{h}{2}) + \frac{h}{2} \frac{dx}{dt} \Big|_{t + \frac{h}{2}} + \frac{h^2}{8} \frac{d^2x}{dt^2} \Big|_{t + \frac{h}{2}} + O(h^3) $$
 
-Para aproximar este valor utilizamos el método de Euler con un paso $h/2$, $(x + h/2) = x(t) + \frac{h}{2}f(x,t)$. De esta manera, obtenemos las ecuaciones del método RK2:
-* $k_1 = hf(x,t),$
-* $k_2 = hf\left(x + \frac{k_1}{2},t + \frac{h}{2}\right)$
-* $x(t + h) = x(t) + k_2$
-El error de aproximación de cada paso es de orden $O(h^3)$, mientras que el error global (con un análisis similar al que hicimos con el método de Euler) es de order $O(h^2)$. 
+Similarmente, podemos hacer lo mismo para \( x(t) \), tal que:
+
+$$ x(t) = x(t + \frac{h}{2}) - \frac{h}{2} \frac{dx}{dt} \Big|_{t + \frac{h}{2}} + \frac{h^2}{8} \frac{d^2x}{dt^2} \Big|_{t + \frac{h}{2}} + O(h^3) $$
+
+Al sustraer ambas ecuaciones, obtenemos:
+
+$$ x(t + h) = x(t) + h \frac{dx}{dt} \Big|_{t + \frac{h}{2}} + O(h^3) $$
+
+Finalmente, la formulación del método RK2 es:
+
+$$ x(t + h) = x(t) + h f \left( x(t + \frac{h}{2}), t + \frac{h}{2} \right) + O(h^3) $$
+
+Donde \( f(x, t) \) es la función que describe la tasa de cambio de \( x \) en función de \( t \).
+
+Este método proporciona una aproximación con error de orden \( O(h^3) \) en cada paso de tiempo, mientras que el error global es del orden \( O(h^2) \), lo cual lo hace más preciso que el método de Euler (que tiene error global \( O(h) \)) para la misma cantidad de pasos temporales.
 
 ### Método de Runge-Kutta de 4$^{\rm to}$ Orden
 
