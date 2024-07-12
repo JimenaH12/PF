@@ -1,0 +1,33 @@
+site_name: Modelo de Tight Binding de Ocupación Simple con Potencial Definido - Dinámica 
+
+theme:
+  name: material
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - rust
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - fenced_code
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - javascript/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - mkdocstrings:
+nav:
+  - Main: index.md
+  - Reference: reference.md
+  - Explicación: explanation.md
+  - Resultados: Resultados.md
+  - Guía de uso: how-to-guides.md
+
