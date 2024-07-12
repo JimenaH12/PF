@@ -29,6 +29,7 @@ Después de importar la función, se puede usar agregando los datos que solicita
 	
 asi ya tenemos un np.array con la probabilidad de encontrar el fermion para cada uno de los puntos de la grilla.
 si quisieras crear una animacion de la evolucion temporal para la probabilidad de encontrar el fermion en cada punto de la grila podrias usar el siguiente codigo:
+
 	#tu_script.py
 	from metodos.proyecto import inicio
 	import matplotlib.pyplot as plt
